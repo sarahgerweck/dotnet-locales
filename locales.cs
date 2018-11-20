@@ -1,10 +1,20 @@
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Collections.Generic;
 
 namespace locales {
     class Program {
+        static void Main(string[] args) {
+            printCultures();
+            if (shouldPrintCultureMap) {
+                printCultureMap();
+            }
+            if (shouldPrintDuplicates) {
+                printDuplicates();
+            }
+        }
+
         /// <summary>
         /// These are "default" and "custom" locales that don't have BCP-47 equivalent
         /// </summary>
@@ -55,16 +65,6 @@ namespace locales {
                     var names = cg.Select(c => $"\"{c.IetfLanguageTag}\"");
                     Console.WriteLine($"{cg.Key} -> List({String.Join(", ", names)})");
                 }
-            }
-        }
-
-        static void Main(string[] args) {
-            printCultures();
-            if (shouldPrintCultureMap) {
-                printCultureMap();
-            }
-            if (shouldPrintDuplicates) {
-                printDuplicates();
             }
         }
     }
